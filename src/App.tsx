@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import LoginPage from "./pages/LoginPage";
+import { User } from "./types/User";
 
 function App() {
+  const [user, setUser] = useState<User | null>(null);
+  if (!user) {
+    return <LoginPage onLogin={setUser} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Welcome</h1>
+      <h2>Role:{user.role}</h2>
     </div>
   );
 }
